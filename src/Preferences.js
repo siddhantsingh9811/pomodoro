@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react/cjs/react.development";
-
+import { useEffect, useState } from "react";
 const Preferences = ({config, setConfig, setOpen, handleReset}) => {
     const [b1,setB1] = useState(config.b1);
     const [b2,setB2] = useState(config.b2);
