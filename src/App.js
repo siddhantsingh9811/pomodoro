@@ -48,13 +48,21 @@ function App() {
       setP(true);
       pause();
     }
+    
+    console.log(state)
+    setState(s);
   }
-
-  const [pref,setPref] = useState(false);
+  const handleReset = ()=>{
+    resume();
+    setState({mode: "study",count:1});
+    start(config.study*60*1000);
+    setP(true);
+    pause();
+  }
+  const [open,setOpen] = useState(false);
   return (
     <div className="app">
-      {pref ? <Preferences config={config} setConfig={setConfig} setPref={setPref}/> :  
-      <Timer timeLeft={timeLeft} controls={controls} state={state} config={config} handleNext={handleNext} pauseState={{p:p,setP:setP}} setPref={setPref}/>}
+      {open ? <Preferences config={config} setConfig={setConfig} setOpen={setOpen} handleReset={handleReset}/> :  <Timer timeLeft={timeLeft} controls={controls} state={state} config={config} handleNext={handleNext} pauseState={{p:p,setP:setP}} setOpen={setOpen}/>}
       
     </div>
   );

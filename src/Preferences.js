@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react/cjs/react.development";
 
-const Preferences = ({config, setConfig, setPref}) => {
+const Preferences = ({config, setConfig, setOpen, handleReset}) => {
     const [b1,setB1] = useState(config.b1);
     const [b2,setB2] = useState(config.b2);
     const [study,setStudy] = useState(config.study);
@@ -14,10 +14,13 @@ const Preferences = ({config, setConfig, setPref}) => {
         c.study = parseInt(study);
         c.i = parseInt(i);
         setConfig(c);
-        console.log(config)
+        handleReset();
+        console.log("save button hit",config)
+        
+        
     }
     const handleCLose = ()=>{
-        setPref(false);
+        setOpen(false);
     }
     return ( 
         <div className="pref">
@@ -69,16 +72,16 @@ const Preferences = ({config, setConfig, setPref}) => {
                     </foreignObject>
                     <defs>
                     <linearGradient id="paint0_linear_0_1" x1="194.5" y1="278.5" x2="-4.40786e-06" y2="205.5" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#11998E"/>
-                    <stop offset="1" stop-color="#38EF7D"/>
+                    <stop stopColor="#11998E"/>
+                    <stop offset="1" stopColor="#38EF7D"/>
                     </linearGradient>
                     <linearGradient id="paint1_linear_0_1" x1="208" y1="196" x2="-7" y2="99" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#F37335"/>
-                    <stop offset="1" stop-color="#FDC830"/>
+                    <stop stopColor="#F37335"/>
+                    <stop offset="1" stopColor="#FDC830"/>
                     </linearGradient>
                     <linearGradient id="paint2_linear_0_1" x1="244" y1="109" x2="12.5" y2="22.5" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#4A00E0"/>
-                    <stop offset="1" stop-color="#8E2DE2"/>
+                    <stop stopColor="#4A00E0"/>
+                    <stop offset="1" stopColor="#8E2DE2"/>
                     </linearGradient>
                     </defs>
                 </svg>
