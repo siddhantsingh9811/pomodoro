@@ -1,13 +1,138 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&family=Montserrat:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+/* font-family: 'Manrope', sans-serif;
+font-family: 'Montserrat', sans-serif; */
+:root{
+  --bg : #262A33;
+  --main: #2C313D;
+  --b: #0ED2F7;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background-color: var(--bg);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+.app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+.timer {
+  height: 500px;
+  width: 550px;
+  background-color: var(--main);
+  border-radius: 30px; 
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.time {
+  font-size: 90px;
+  font-family: 'Manrope', sans-serif;
+  
+}
+.lap {
+  font-size: 25px;
+  font-weight: 300;
+}
+.buttons .b {
+  height: 55px;
+  cursor: pointer;
+}
+.buttons .menu {
+  height: 50px;
+}
+.buttons {
+  width: 35%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pref {
+  height: fit-content;
+  width: 550px;
+  background-color: var(--main);
+  border-radius: 30px; 
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+  padding: 50px;
+}
+.pref h1{
+  font-size: 40px;
+  margin: 0;
+}
+.op {
+  display: flex;
+  align-items: flex-end;
+}
+.pref h2{
+  font-size: 25px;
+  width: 30%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.op .i{
+  font-weight: 300;
+  display: flex;
+}
+.op input{
+  font-family: 'Major Mono Display', monospace;
+  font-size: 22px;
+}
+.op span{
+  color: #0ED2F7;
+}
+input{
+  all:unset;
+}
+.thing-container{
+  display: flex;
+
+}
+.thing {
+  padding-top: 3px;
+  padding-left: 5px;
+}
+.schedule{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.sc{
+  height: 300px;
+  padding-left: 20px;
+}
+.exit{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.exit .b{
+  text-align: center;
+  padding: 5px;
+  font-size: 20px;
+  width: 70px;
+  border-radius: 30px;
+  border: 1px solid;
+  margin: 10px;
+  cursor: pointer;
+}
+.b2 {
+  color: #0ED2F7;
+  border-color: #0ED2F7;
+}
+.b1 {
+  color: #38EF7D;
+  border-color: #38EF7D;
+}
+.cont {
+  display: flex;
+  align-content: center;
 }

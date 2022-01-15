@@ -1,24 +1,61 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import useCountDown from './countdownHook';
+import Timer from './Timer';
+import Preferences from './Preferences';
 
 function App() {
+  let initial_state = {mode: "study",count:1};
+  const [state, setState] = useState(initial_state);
+  let initial_config = {study: 40, b1:30, b2:60, i:4};
+  const [config, setConfig] = useState(initial_config);
+  const [p, setP] = useState(false);
+  const interval = 1000;
+  const initialTime = config.study*60*1000;
+  const [timeLeft, { start, pause, resume, reset }] = useCountDown(initialTime, interval);
+
+  const controls = {
+    start:start,
+    pause:pause,
+    resume:resume,
+    reset:reset,
+  }
+  
+  useEffect(()=>{
+    start(config.study*60*1000);
+  },[]);
+  
+  const handleNext = ()=>{
+    let s = state;
+
+    resume();
+    
+    if(s.mode === "study" && s.count%config.i === 0){
+      s.mode = "b2"; 
+      start(config.b2*60*1000);
+      setP(true);
+      pause();
+    }
+    else if(s.mode === "study" && s.count%config.i !== 0){
+      s.mode = "b1";
+      start(config.b1*60*1000);
+      setP(true);
+      pause();
+    }
+    else if(s.mode === "b1" || s.mode === "b2"){
+      s.mode = "study";
+      s.count = s.count+1;
+      start(config.study*60*1000);
+      setP(true);
+      pause();
+    }
+  }
+
+  const [pref,setPref] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      {pref ? <Preferences config={config} setConfig={setConfig} setPref={setPref}/> :  
+      <Timer timeLeft={timeLeft} controls={controls} state={state} config={config} handleNext={handleNext} pauseState={{p:p,setP:setP}} setPref={setPref}/>}
+      
     </div>
   );
 }
