@@ -7,6 +7,9 @@ const Preferences = ({config, setConfig, setOpen, handleReset}) => {
     const [i, setI] = useState(config.i);
     let width = {b1:`${(b1.toString().length)*16}px`,b2:`${b2.toString().length*16}px`,study:`${study.toString().length*16}px`}
 
+    const handleCLose = ()=>{
+        setOpen(false);
+    }
     const handleSave = ()=>{
         let c = config;
         c.b1 = parseInt(b1);
@@ -16,11 +19,8 @@ const Preferences = ({config, setConfig, setOpen, handleReset}) => {
         setConfig(c);
         handleReset();
         console.log("save button hit",config)
+        setOpen(false)
         
-        
-    }
-    const handleCLose = ()=>{
-        setOpen(false);
     }
     return ( 
         <div className="pref">
